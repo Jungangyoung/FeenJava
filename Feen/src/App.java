@@ -16,5 +16,6 @@ public class App {
 
         Feen feen = new Feen(boardWidth, boardHeight);
         frame.add(feen);
+        frame.pack();
     }
 }

@@ -5,15 +5,47 @@ import java.util.Random;
 import javax.swing.*;
 
 public class Feen extends JPanel{
+    private class Tile{
+        int x;
+        int y;
+
+        Tile(int x, int y){
+            this.x = x;
+            this.y = y;
+        }
+
+    }
+
     int boardWidth;
     int boardHeight;
+    int tileSize = 25;
 
+    Tile snakeHead;
 
     Feen(int boardWidth, int boardHeight){
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
         setPreferredSize(new Dimension(this.boardWidth, this.boardHeight));
-        setBackground(Color.lightGray);
+        setBackground(Color.black);
 
+        snakeHead = new Tile(5, 5);
+
+    }
+
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        draw(g);
+    }
+
+    public void draw(Graphics g){
+        //Grid
+        for (int i = 0; i < boardWidth / tileSize; i++) {
+            g.draw.line(i * tileSize, 0, i * tileSize, boardHeight);
+            
+        }
+
+        //Snake
+        g.setColor(Color.green);
+        g.fillRect(snakeHead.x * tileSize, snakeHead.y * tileSize, tileSize, tileSize);
     }
 }
