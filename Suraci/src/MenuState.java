@@ -1,0 +1,10 @@
+public class MenuState extends GameState{
+    
+    public MenuState(GameStateManager gsm){
+
+        this.gsm = gsm;
+    }
+
+    
+
+}

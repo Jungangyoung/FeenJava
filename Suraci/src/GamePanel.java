@@ -17,12 +17,15 @@ public class GamePanel extends JPanel
     private long targetTime = 1000 / FPS;
 
     //image
-    private BuffferedImage image;
+    private BufferedImage image;
     private Graphics2D g;
+
+    //game state manager
+    private GameStateManager gsm;
 
     public GamePanel() {
         super();
-        setPrefferedSize(
+        setPreferredSize(
             new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
         setFocusable(true);
         requestFocus();
@@ -47,6 +50,8 @@ public class GamePanel extends JPanel
 
         running = true;
         
+        gsm = new GameStateManager();
+
     }
 
     public void run() {
@@ -78,8 +83,12 @@ public class GamePanel extends JPanel
         }
     } 
 
-    private void update() {}
-    private void draw() {}
+    private void update() {
+        gsm.update();
+    }
+    private void draw() {
+        gsm.draw(g);
+    }
     private void drawToScreen() {
         Graphics g2 = getGraphics();
         g2.drawImage(image, 0, 0, null);
@@ -87,8 +96,12 @@ public class GamePanel extends JPanel
     }
 
     public void keyTyped(KeyEvent key) {}
-    public void keyPressed(KeyEvent key) {}
-    public void keyReleased(KeyEvent key) {}
+    public void keyPressed(KeyEvent key) {
+        gsm.keyPressed(key.getKeyCode());
+    }
+    public void keyReleased(KeyEvent key) {
+        gsm.keyPressed(key.getKeyCode());
+    }
 
 }
 
