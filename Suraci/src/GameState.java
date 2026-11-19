@@ -1,6 +1,6 @@
 
 
-public class GameState {
+public abstract class GameState {
     
     protected GameStateManager gsm;
 

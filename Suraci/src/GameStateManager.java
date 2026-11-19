@@ -28,6 +28,7 @@ public class GameStateManager {
         gameStates.get(currentState).draw(g);
     }
 
+
     public void keyPressed(int k) {
         gameStates.get(currentState).keyPressed(k);
     }
